@@ -1,7 +1,18 @@
 {
   "name": "coding-questions",
   "version": "1.0.0",
+  "description": "Three interview-style TypeScript coding challenges with Bun tests and reference solutions.",
   "private": true,
+  "license": "MIT",
+  "author": "Joshua Skootsky",
+  "keywords": [
+    "coding-challenges",
+    "interview-prep",
+    "typescript",
+    "bun",
+    "algorithms",
+    "data-structures"
+  ],
   "type": "module",
   "scripts": {
     "test": "bun test --bail=1",
