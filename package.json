@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "bun test",
+    "test": "bun test --bail=1",
+    "test:ci": "bun test",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
