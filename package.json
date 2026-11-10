@@ -15,6 +15,7 @@
   ],
   "type": "module",
   "scripts": {
+    "guide": "bun run scripts/guide.ts",
     "test": "bun test --bail=1",
     "test:ci": "bun test",
     "typecheck": "tsc --noEmit"

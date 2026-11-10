@@ -5,6 +5,9 @@ statement, a typed stub, and a test suite that **fails until you implement
 it**. The default branch is a red scaffold on purpose — a passing suite means
 you are done.
 
+New here? Run `bun run guide` for a tour of the repo, the three challenges,
+and the files to read, edit, and test for each.
+
 ## Workflow
 
 1. Clone and install:
@@ -15,9 +18,15 @@ you are done.
    bun install
    ```
 
-2. Pick a challenge from the table below and read its `README.md`.
-3. Implement the function in the matching `<name>.ts` file.
-4. Run the tests:
+2. Run the guide to get oriented:
+
+   ```bash
+   bun run guide
+   ```
+
+3. Pick a challenge from the table below and read its `README.md`.
+4. Implement the function in the matching `<name>.ts` file.
+5. Run the tests:
 
    ```bash
    bun run test
@@ -26,7 +35,7 @@ you are done.
    This is fail-fast: it stops at the first failing test, which keeps the
    practice loop tight.
 
-5. When you want the full picture, run the whole suite and type-check:
+6. When you want the full picture, run the whole suite and type-check:
 
    ```bash
    bun run test:ci
@@ -56,6 +65,7 @@ question-a-array/
 
 | Command | What it does |
 | --- | --- |
+| `bun run guide` | Walks through the repo, the challenges, and the files to read and edit |
 | `bun run test` | Runs tests and stops at the first failure (`--bail=1`) |
 | `bun run test:ci` | Runs the complete suite with no early exit |
 | `bun run typecheck` | Runs `tsc --noEmit` |
