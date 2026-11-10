@@ -1,10 +1,41 @@
-# Coding Challenges (TypeScript)
+# Do Your Own Coding Test
 
-Three interview-style coding challenges, each with its own problem statement,
-a typed stub, and a thorough test suite. The tests fail until you implement
-the function — that red state is the starting point, not a broken repo.
+Three interview-style TypeScript challenges. Each one ships with a problem
+statement, a typed stub, and a test suite that **fails until you implement
+it**. The default branch is a red scaffold on purpose — a passing suite means
+you are done.
 
-## Challenges
+## Workflow
+
+1. Clone and install:
+
+   ```bash
+   git clone https://github.com/JoshuaSkootsky/do-your-own-coding-test.git
+   cd do-your-own-coding-test
+   bun install
+   ```
+
+2. Pick a challenge from the table below and read its `README.md`.
+3. Implement the function in the matching `<name>.ts` file.
+4. Run the tests:
+
+   ```bash
+   bun run test
+   ```
+
+   This is fail-fast: it stops at the first failing test, which keeps the
+   practice loop tight.
+
+5. When you want the full picture, run the whole suite and type-check:
+
+   ```bash
+   bun run test:ci
+   bun run typecheck
+   ```
+
+Requires [Bun](https://bun.com) 1.3 or newer.
+
+## The challenges
 
 | # | Challenge | Topic | Target complexity |
 | --- | --- | --- | --- |
@@ -12,45 +43,25 @@ the function — that red state is the starting point, not a broken repo.
 | B | [Find First and Last Position](question-b-double-binary-search/README.md) | Binary search | `O(log n)` time, `O(1)` extra space |
 | C | [Combination Sum II](question-c-backtracking/README.md) | Backtracking | exponential, pruned by partial sum |
 
-Each challenge folder contains:
-
-- `README.md` — problem statement, examples, constraints, and complexity target
-- `<name>.ts` — the stub to implement
-- `<name>.test.ts` — the tests
-
-## Quick start
-
-Requires [Bun](https://bun.com) 1.3 or newer.
-
-```bash
-bun install
-bun run test
-```
-
-`bun run test` is fail-fast: it stops at the first failing test, which keeps
-the practice loop tight. When you want the full picture:
-
-```bash
-bun run test:ci      # run every test, no early exit
-bun run typecheck    # tsc --noEmit
-```
-
-> Note: `bun test` is Bun's built-in runner and does not read the `test`
-> script. Use `bun run test` or `bun run test:ci` to get the behavior above.
-
-## Repository layout
+Each challenge folder contains the same three files:
 
 ```
 question-a-array/
-  README.md
-  mergeIntervals.ts          <- implement this
-  mergeIntervals.test.ts
-question-b-double-binary-search/
-  ...
-question-c-backtracking/
-  ...
-solutions/                   <- reference implementations
+  README.md                  problem statement, examples, constraints
+  mergeIntervals.ts          stub to implement
+  mergeIntervals.test.ts     tests
 ```
+
+## Scripts
+
+| Command | What it does |
+| --- | --- |
+| `bun run test` | Runs tests and stops at the first failure (`--bail=1`) |
+| `bun run test:ci` | Runs the complete suite with no early exit |
+| `bun run typecheck` | Runs `tsc --noEmit` |
+
+> `bun test` is Bun's built-in runner and does not read the `test` script.
+> Use `bun run test` or `bun run test:ci` to get the behavior above.
 
 ## Test design
 
@@ -61,7 +72,8 @@ Each suite mixes:
   randomized inputs
 - complexity guards where relevant (for example, a large-array timing test)
 
-Randomized tests use a seeded PRNG. Override the seed to explore more inputs:
+Randomized tests use a seeded PRNG, so failures are reproducible. Override the
+seed to explore more inputs:
 
 ```bash
 TEST_SEED=42 bun run test
@@ -69,17 +81,16 @@ TEST_SEED=42 bun run test
 
 ## Reference solutions
 
-Completed implementations live in [`solutions/`](solutions/). Try each
-challenge before looking; when you want to compare, copy the matching file
-over the stub. If you would rather not see them at all, delete the folder or
-add it to your local ignore rules.
+Completed implementations live in [`solutions/`](solutions/). They are public,
+so try each challenge before looking. When you want to compare, copy the
+matching file over the stub. If you would rather not see them at all, delete
+the folder or add it to your local ignore rules.
 
 ## Why no CI?
 
-The default branch is intentionally a red scaffold: tests fail until the
-challenges are solved. A CI workflow would therefore fail on every push to
-`main`, so none is configured. Run `bun run test:ci` locally before sharing a
-solution.
+The default branch is intentionally red: the tests fail until the challenges
+are solved, so a CI workflow would fail on every push to `main`. Run
+`bun run test:ci` locally before sharing a solution.
 
 ## Contributing
 
